@@ -29,7 +29,7 @@ cellOneObj = {
     living: true,
     isSelected: isChecked
     }
-grid.add(cellOneObj)
+grid.add(cellOneObj);
 
 
 
@@ -49,7 +49,7 @@ cellThreeObj= {
     living:true,
     isSelected: isChecked
     }
-grid.add(cellThreeObj)
+grid.add(cellThreeObj);
 
 
 cellFourObj= {
@@ -59,7 +59,7 @@ cellFourObj= {
     living: isLive,
     isSelected: true
     }
-grid.add(cellFourObj)
+grid.add(cellFourObj);
 
 cellFiveObj= {
     gridNumber: "five",
@@ -68,7 +68,7 @@ cellFiveObj= {
     living: isLive,
     isSelected: isChecked
     }
-grid.add(cellFiveObj)
+grid.add(cellFiveObj);
 
     
 cellSixObj= {
@@ -88,7 +88,7 @@ cellSevenObj= {
     living: isLive,
     isSelected: isChecked
     }
-grid.add(cellSevenObj)
+grid.add(cellSevenObj);
 
 cellEightObj= {
     gridNumber: "eight",
@@ -106,7 +106,7 @@ cellNineObj= {
     living: isLive,
     isSelected: isChecked
     }
-grid.add(cellNineObj)
+grid.add(cellNineObj);
 
 
 
@@ -118,12 +118,12 @@ const neighbors = {
 
 let gridSet = new Set()
 gridSet.add(cellFiveObj)
-let aroundSet= new Set();
+let neighborSet= new Set(neighbors['five']);
 
 
 const surroundingSet=()=>{
     let aliveNeighborSet = null;
-    neighbors['five'].forEach((cell) =>{
+    neighborSet.forEach((cell) =>{
         const { gridNumber, row , col, living, isSelected} = cell
         if(isSelected || !living){
           neighborSet.delete(cell)  
@@ -135,7 +135,7 @@ const surroundingSet=()=>{
     })
     return neighbor;
 } 
-console.log(surroundingSet())
+console.log(surroundingSet());
 
 
 
