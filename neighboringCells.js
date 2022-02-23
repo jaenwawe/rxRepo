@@ -1,120 +1,141 @@
 let center = 1; 
 let isLive = false;
-let neighbors
+let  isChecked = false;
 
-const grid = []
+let noCellObj = null;
+let cellOneObj = null;
+let cellTwoObj= null;
+let cellThreeObj=null;
+let cellFourObj = null;
+let cellFiveObj = null;
+let cellSixObj = null;
+let cellSevenObj= null;
+let cellEightObj = null;
+let cellNineObj = null;
 
+const grid = new Set();
 
- let cellOneObj= {
+noCellObj= {
+    gridNumber: "0",
+    row: null,
+    col: null,
+    living: false,
+    isSelected:false
+    }
+cellOneObj = {
+    gridNumber: "one",
     row: center - 1, 
     col: center - 1,
-    living: isLive,
-    selected:false
-   }
-grid.push(cellOneObj)
+    living: true,
+    isSelected: isChecked
+    }
+grid.add(cellOneObj)
 
-let cellTwoObj= {
+
+
+cellTwoObj= {
+    gridNumber: "two",
     row: center - 1, 
     col: center,
-    living: isLive,
-    selected:false
+    living: true,
+    isSelected: false
     }
-grid.push(cellTwoObj)
+grid.add(cellTwoObj)
 
-
-let cellThreeObj= {
+cellThreeObj= {
+    gridNumber: "three",
     row: center-1, 
     col: center+1,
     living:true,
-    selected:false
+    isSelected: isChecked
     }
-grid.push(cellThreeObj)
+grid.add(cellThreeObj)
 
-let cellFourObj= {
+
+cellFourObj= {
+    gridNumber: "four",
     row: center, 
     col: center-1,
     living: isLive,
-    selected:false
+    isSelected: true
     }
-grid.push(cellFourObj)
+grid.add(cellFourObj)
 
-let cellFiveObj= {
+cellFiveObj= {
+    gridNumber: "five",
     row: center, 
     col: center,
     living: isLive,
-    selected:false
+    isSelected: isChecked
     }
-grid.push(cellFiveObj)
+grid.add(cellFiveObj)
 
     
-let cellSixObj= {
+cellSixObj= {
+    gridNumber: "six",
     row: center, 
     col: center+1,
-    living: true,
-    selected:false
+    living: isLive,
+    isSelected: isChecked
     }
-grid.push(cellSixObj)
+grid.add(cellSixObj)
 
 
-let cellSevenObj= {
+cellSevenObj= {
+    gridNumber: "seven",
     row: center +1, 
     col: center-1,
-    living: true,
-    selected:false
+    living: isLive,
+    isSelected: isChecked
     }
-grid.push(cellSevenObj)
+grid.add(cellSevenObj)
 
-let cellEightObj= {
+cellEightObj= {
+    gridNumber: "eight",
     row: center +1, 
     col: center,
-    living: true,
-    selected:false
+    living: isLive,
+    isSelected: isChecked
     }
-grid.push(cellEightObj)
+grid.add(cellEightObj)
 
-let cellNineObj= {
+cellNineObj= {
+    gridNumber: "nine",
     row: center +1, 
     col: center+1,
-    living: true,
-    selected:false
+    living: isLive,
+    isSelected: isChecked
     }
-grid.push(cellNineObj)
-
-let neighborCount = 0;
-for (cell of grid) {
-    let above = (cell.row=== center && cell.col=== center+1) 
-    let below = (cell.row=== center && cell.col=== center+1)
-    let rightRow = cell.row=== (center-1)
-    let leftRow =  cell.row=== (center+1)
+grid.add(cellNineObj)
 
 
-    if(rightRow && cell.living==true && cell.selected==false) {
-        neighborCount+=1;
-        cell.selected=true;
-    
-    }
-    if(leftRow && cell.living==true && cell.selected==false) {
-        neighborCount+=1;
-        cell.selected=true;
-    
-    }
-    if((above || below) && (cell.living==true && cell.selected==false)) {
-        neighborCount+=1;
-        cell.selected=true;
-    }
+
+let neighbor=0;
+const neighbors = {
+    five :[cellOneObj,cellTwoObj,cellThreeObj,cellFourObj,cellSixObj,cellSevenObj,cellEightObj,cellNineObj]
 }
 
 
-
-console.log('neighborCount =' + neighborCount)
-console.log(cellOneObj)
-console.log(grid)
-
-
-    // && cell.col===0) && cell.living === true && cell.selected === false) 
-    // neighborCount+=1;
-    // console.log(cell)
+let gridSet = new Set()
+gridSet.add(cellFiveObj)
+let aroundSet= new Set();
 
 
-//if((cell.row=== (0) && cell.col===0) && cell.living === true && cell.selected === false) 
+const surroundingSet=()=>{
+    let aliveNeighborSet = null;
+    neighbors['five'].forEach((cell) =>{
+        const { gridNumber, row , col, living, isSelected} = cell
+        if(isSelected || !living){
+          neighborSet.delete(cell)  
+    
+        } else{
+            neighbor++;
+            cell.isSelected = true;
+        }
+    })
+    return neighbor;
+} 
+console.log(surroundingSet())
+
+
 
